@@ -14,7 +14,7 @@ LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
 
 def ask_gemini(market_data):
     try:
-        model = genai.GenerativeModel('models/gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-2.0-flash')
         prompt = f"คุณคือผู้เชี่ยวชาญด้านการเทรด SMC (Smart Money Concepts) และวิเคราะห์กราฟทองคำ (XAUUSD) อย่างแม่นยำ นี่คือข้อมูลตลาดล่าสุดที่ได้รับมา:\n\n{market_data}\n\nกรุณาวิเคราะห์แนวโน้มตลาดตามหลักการ SMC (เช่น โครงสร้างราคา CHoCH, BOS, IDM, OB) และสรุปแผนการเทรดที่ชัดเจน สั้นกระชับ เข้าใจง่าย ส่งกลับมาเป็นภาษาไทยเพื่อแจ้งเตือนในไลน์"
         response = model.generate_content(prompt)
         return response.text
